@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
 export const MuiTypography = () => {
-  type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "subtitle1" | "subtitle2" | "body1" | "body2";
+  // type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "subtitle1" | "subtitle2" | "body1" | "body2";
   return (
     <>
-      {}
+      <Typography variant='h3' margin='0px 0px 50px 0px'>TYPOGRAPHY</Typography>
       <Typography variant='h1'>h1 Heading</Typography>
       <Typography variant='h2'>h2 Heading</Typography>
       <Typography variant='h3'>h3 Heading</Typography>
@@ -18,8 +18,6 @@ export const MuiTypography = () => {
       <Typography >(variant none = body1 by default) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eos, necessitatibus. Consequatur cupiditate ex iure iusto magni nihil, officiis. Aspernatur eos harum similique! Atque illum odio quod repellat unde veniam.</Typography>
       <Typography variant='body1'>(body1) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eos, necessitatibus. Consequatur cupiditate ex iure iusto magni nihil, officiis. Aspernatur eos harum similique! Atque illum odio quod repellat unde veniam.</Typography>
       <Typography variant='body2'>(body1) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eos, necessitatibus. Consequatur cupiditate ex iure iusto magni nihil, officiis. Aspernatur eos harum similique! Atque illum odio quod repellat unde veniam.</Typography>
-
-
     </>
   );
 }

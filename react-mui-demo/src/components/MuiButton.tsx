@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, IconButton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Button, ButtonGroup, IconButton, Stack, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { FormatBold, FormatItalic, FormatUnderlined } from '@mui/icons-material';
 import React, { useState } from 'react';
@@ -10,6 +10,7 @@ export const MuiButton = () => {
   }
   return (
     <Stack spacing={4}>
+      <Typography variant='h3'>BUTTONS</Typography>
       <Stack spacing={2} direction='row'>
         <Button variant='text' href='https://google.com'>Text (link to google)</Button>
         <Button variant='contained'>Contained</Button>
