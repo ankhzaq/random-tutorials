@@ -3,66 +3,149 @@ import './App.css';
 
 const localNodes = [
   {
-    id: 6964,
-    image: 'proceso',
-    originalName: 'kpfm-es-spk-qlt-reclassificationsparquet-01',
-    secondLabel: 'Dataproc',
-    tooltipInfo: {
-      prop1: "prosad",
-      prop2: "p",
-      prop3: "pr"
-    }
-  },
-  {
-    id: 3072,
-    image: 'nodo',
-    originalName: 't_kqpd_stats',
-    secondLabel: 'HDFS-Parquet | MASTERDATA',
-    tooltipInfo: {
-      prop4: "uno, dos, tres, cuatro, cincoas dasdasdasd asdasd asdasdas das final",
-      prop5: "asd",
-    }
-  },
-  {
-    id: 5658,
-    image: 'nodo',
-    originalName: 't_kpfm_reclassification_raw'
-  },
-  {
     id: 1,
-    image: 'nodo',
-    originalName: 'nodo1',
-    tooltipInfo: {
-      prop6: "property 6",
-      prop7: "property 7",
-    }
+    image: 'proceso',
+    originalName: 'process1',
+    secondLabel: 'Second name',
   },
   {
     id: 2,
-    image: 'nodo',
-    originalName: 'nodo2'
+    image: 'proceso',
+    originalName: 'node2'
+  },
+  {
+    id: 3,
+    image: 'node',
+    originalName: 'node3'
+  },
+  {
+    id: 4,
+    image: 'proceso',
+    originalName: 'node4'
+  },
+  {
+    id: 5,
+    image: 'node',
+    originalName: 'node5',
+    secondLabel: 'Second name'
+  },
+  {
+    id: 6,
+    image: 'npm',
+    originalName: 'node6'
+  },
+  {
+    id: 7,
+    image: 'node',
+    originalName: 'node7'
+  },
+  {
+    id: 8,
+    image: 'node',
+    originalName: 'node8',
+    secondLabel: 'Second name'
+  },
+  {
+    id: 9,
+    image: 'node',
+    originalName: 'node9'
+  },
+  {
+    id: 10,
+    image: 'node',
+    originalName: 'node10'
+  },
+  {
+    id: 11,
+    image: 'node',
+    originalName: 'node10',
+    secondLabel: 'Second name'
+  },
+  {
+    id: 12,
+    image: 'node',
+    originalName: 'node10'
+  },
+  {
+    id: 13,
+    image: 'node',
+    originalName: 'node10'
+  },
+  {
+    id: 14,
+    image: 'node',
+    originalName: 'node10'
+  },
+  {
+    id: 15,
+    image: 'node',
+    originalName: 'node10'
   }
 ];
 const localLinks = [
   {
-    source: 6964,
-    target: 3072
+    source: 1,
+    target: 2
   },
   {
-    source: 5658,
-    target: 6964
-  },
-  {
-    source: 6964,
-    target: 1,
+    source: 3,
+    target: 2
   },
   {
     source: 2,
+    target: 5,
+  },
+  {
+    source: 5,
+    target: 6,
+  },
+  {
+    source: 6,
     target: 1,
   },
   {
-    source: 6964,
-    target: 5658,
+    source: 1,
+    target: 7,
+  },
+  {
+    source: 7,
+    target: 10,
+  },
+  {
+    source: 8,
+    target: 10,
+  },
+  {
+    source: 10,
+    target: 2,
+  },
+  {
+    source: 4,
+    target: 7,
+  },
+  {
+    source: 9,
+    target: 7,
+  },
+  {
+    source: 10,
+    target: 14,
+  },
+  {
+    source: 6,
+    target: 12,
+  },
+  {
+    source: 15,
+    target: 8,
+  },
+  {
+    source: 11,
+    target: 3,
+  },
+  {
+    source: 13,
+    target: 5,
   }
 ];
 
@@ -70,8 +153,10 @@ function App() {
   return (
     <div>
       <Graph
+        height={window.innerHeight}
         links={localLinks}
         nodes={localNodes}
+        width={window.innerWidth}
       />
     </div>
   );
