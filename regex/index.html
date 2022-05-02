@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.2">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+<h1>REGEX</h1>
+<script>
+  /* TEST METHOD */
+
+  let string;
+  let string2;
+  let regex;
+  let regex2;
+  let result;
+
+  string = "Hello, World!";
+  regex = /Hello/;
+  result = regex.test(string);
+  console.log("result 1: ", result);
+
+  string = "Somewhere Waldo is hiding in this text.";
+  regex = /search/;
+  result = regex.test(string);
+  console.log("result 2: ", result);
+
+  // check string with OR
+  string = "James has a pet cat.";
+  regex = /dog|cat|bird|fish/;
+  result = regex.test(string);
+  console.log("result 3: ", result);
+
+  // adding "i" without sensitive lower/upper case
+  string = "freeCodeCamp";
+  regex = /freecodecamp/i;
+  result = regex.test(string);
+  console.log("result 4: ", result);
+
+
+  string = "Extract the word 'coding' from this string";
+  regex = /coding/;
+  result = string.match(regex);
+  console.log("result 5: ", result);
+
+  // Add "g" to match multiple words
+  string = "Match multiple words: Repeat, Repeat, Repeat";
+  regex = /Repeat/g;
+  result = string.match(regex);
+  console.log("result 6: ", result);
+
+  // Add "g" to match multiple words + add "i" to match lower/upper case
+  string = "Twinkle, twinkle, little star";
+  regex = /twinkle/ig;
+  result = string.match(regex);
+  console.log("result 6: ", result);
+
+  // match results like a "like" operation
+
+  string = "I'll hum a song";
+  string2 = "Bear a hug";
+
+  regex = /hu./;
+  console.log("result 7: ");
+  console.log(string.match(regex));
+  console.log(string2.match(regex));
+
+  string = "Let's have fun with regular expressions!";
+
+  regex = /.un/;
+  console.log("result 8: ");
+  console.log(string.match(regex));
+
+  // Get words start by "b", end by "g" and it has "a"/"i"/"u" between those letters.
+
+  string = "Beware of bugs in the above code;";
+
+  regex = /b[aiu]g/;
+  console.log("result 9: ");
+  console.log(string.match(regex));
+
+  // Get vocals
+
+  string = "BEware of bUgs in the Above cOdE;";
+  regex = /[aeiou]/g;
+  console.log("result 10: ", string.match(regex));
+
+  // Get every letter of the alphabet
+
+  string = "BEware of bUgs in the Above cOdE;";
+  regex = /[a-z]/ig;
+  console.log("result 11: ", string.match(regex));
+
+
+
+</script>
+</body>
+</html>
