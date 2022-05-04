@@ -96,7 +96,56 @@
   regex = /[a-z]/ig;
   console.log("result 11: ", string.match(regex));
 
+  // Get numbers between 2 and 6
+  string = "the PI number is : 3.141592653s";
+  regex = /[2-6]/g;
+  console.log("result 12: ", string.match(regex));
 
+  // Aff symbol "^" to indicate the characters that you don't want to match.
+  // Get everything is not included
+  string = "Get everything, except numbers and vocals 12345 09812. check it!";
+  regex = /[^0-9aeiou]/ig;
+  console.log("result 13: ", string.match(regex));
+
+  // Get characters if appears once or more times
+  string = "Mississipsi";
+  regex = /s+/ig;
+  console.log("result 14: ", string.match(regex));
+
+  // Adding "*", get same characters until it changes
+  string = "goooooooogal";
+  regex = /go*/;
+  console.log("result 15: ", string.match(regex));
+
+  // Adding "*", get same characters until it changes
+  string = "Aaaaaaaarrrrgh";
+  regex = /Aa*/;
+  console.log("result 16: ", string.match(regex));
+
+  // Getting part of strings
+  string = "titanic";
+  regex = /t[a-z]*i/;
+  console.log("result 17: ", string.match(regex)); // titani
+
+  string = "<h1>Winter is coming</h1>";
+  regex = /<.*>/;
+  console.log("result 18: ", string.match(regex)); // <h1>Winter is coming</h1>
+
+  // Add "?" to get chanracters between the first character which match
+
+  string = "titanic";
+  regex = /t[a-z]*?i/;
+  console.log("result 19: ", string.match(regex)); // ti
+
+  string = "<h1>Winter is coming</h1>";
+  regex = /<.*?>/;
+  console.log("result 20: ", string.match(regex)); // <h1>
+
+  /* - - - - - - - - - - - - - - - - - - */
+
+  string = "P1P2P3P4P5P6CCCP7P8P9";
+  regex = /C+/;
+  console.log("result 21: ", string.match(regex)); // CCC
 
 </script>
 </body>
