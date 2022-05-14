@@ -147,6 +147,38 @@
   regex = /C+/;
   console.log("result 21: ", string.match(regex)); // CCC
 
+  // check if string starts by some character
+
+  string = "Cal and Ricky";
+  regex = /^Cal/;
+  console.log("result 22-a: ", regex.test(string)); // true
+  console.log("result 22-b: ", /^cal/.test(string)); // false
+
+  // check if string end by some character
+
+  string = "Cal and Ricky";
+  regex = /Ricky$/;
+  console.log("result 22-a: ", regex.test(string)); // true
+  console.log("result 22-b: ", /Rickys$/.test(string)); // false
+
+  // get every caracter alphanumeric (not spaces or symbols like '.')
+
+  string = "The five boxing wizards jump quickly2.";
+  regex = /\w/g;
+  console.log("result 23: ", string.match(regex)); // list of characters alphanumeric found
+
+  // Get only numbers
+
+  string = "Your sandwich will be $5.00";
+  regex = /\d/g;
+  console.log("result 24: ", string.match(regex)); // list of numbers found
+
+  // Get not numbers
+
+  string = "Your sandwich will be $5.00";
+  regex = /\D/g;
+  console.log("result 25: ", string.match(regex)); // list of numbers found
+
 </script>
 </body>
 </html>
