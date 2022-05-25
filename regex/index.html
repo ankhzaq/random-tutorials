@@ -179,6 +179,31 @@
   regex = /\D/g;
   console.log("result 25: ", string.match(regex)); // list of numbers found
 
+  // Restrict username
+  string = "JackOfAllTrades";
+  regex = /^[A-Za-z]{2,}\d*$/;
+  console.log("result 26: ", regex.test(string));
+
+  // Match whitespace
+  string = "Whitespace is important in separating words";
+  regex = /\s/g;
+  console.log("result 27: ", string.match(regex)); // return list with the spaces of the string
+
+  // Match NO whitespace
+  string = "NO Whitespace is important in separating words";
+  regex = /\S/g;
+  console.log("result 28: ", string.match(regex)); // return list with the characters except of the whitespaces
+
+  // Specify Upper and Lower Number of matches
+  string = "Ohhh no";
+  regex = /Oh{3,6} no/;
+  console.log("result 29: ", regex.test(string)); // return list with the characters except of the whitespaces
+
+  // Specify only Lower Number of matches
+  string = "Hazzzzah";
+  regex = /z{4,}/;
+  console.log("result 30: ", regex.test(string)); // return list with the characters except of the whitespaces
+
 </script>
 </body>
 </html>
