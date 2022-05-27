@@ -204,6 +204,21 @@
   regex = /z{4,}/;
   console.log("result 30: ", regex.test(string)); // return list with the characters except of the whitespaces
 
+  // Specify extact number of matches
+  string = "Timmmmber";
+  regex = /Tim{4}ber/;
+  console.log("result 31: ", regex.test(string)); // true
+
+  // Check for All or None
+  string = "favorite";
+  regex = /favou?rite/;
+  console.log("result 32: ", regex.test(string)); // true
+
+  // Capture group to search and replace
+  string = "   Hello, World!  ";
+  regex = /^\s+|\s+$/g;
+  console.log("result 33: ", string.replace(regex, '')); // true
+
 </script>
 </body>
 </html>
