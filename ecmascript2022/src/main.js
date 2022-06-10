@@ -24,9 +24,17 @@ console.log(user.email); // This line is correct because email is a public varia
 
 //SECOND FEATURE -> you can use await outside of async function
 
-const response = await fetch("https://reqres.in/api/users?api=1");
+// const response = await fetch("https://reqres.in/api/users?api=1");
 
-const json = await response.json();
-console.log(json);
+// const json = await response.json();
+// console.log(json);
 
+
+// THIRD FEATURE -> You can access to one element of the array in a reverse direction (last element could be at index -1).
+
+const numbers = [1, 2, 3];
+
+console.log(numbers.at(0));
+console.log(numbers.at(5));
+console.log(numbers.at(-1)); // return 3 (las element)
 
