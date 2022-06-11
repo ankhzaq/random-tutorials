@@ -1,0 +1,30 @@
+{
+  "name": "ecmascript2022",
+  "version": "1.0.0",
+  "description": "A JavaScript project about tech. interviews",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "nodemon --exec npm start",
+    "start": "node ./node_modules/parcel-bundler/bin/cli serve ./src/index.html --port 8080",
+    "build": "node ./node_modules/parcel-bundler/bin/cli build ./src/index.html --out-dir ./dist/",
+    "lint": "node ./node_modules/eslint/bin/eslint . --ext .js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.16",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-top-level-await": "^7.14.5",
+    "babel-preset-es2022": "0.0.0"
+  }
+}

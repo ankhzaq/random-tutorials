@@ -1,0 +1,14 @@
+{
+  "name": "mypackage",
+  "version": "0.0.1",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "ignorePatterns": ["dist/**/*", "node_modules/**/*"],
+  "rules": {
+    "max-len": "off"
+  }
+}
