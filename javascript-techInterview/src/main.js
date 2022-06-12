@@ -1,5 +1,3 @@
-// FUNNY PROBLEMS START IN QUESTION 11
-
 const SMALL_SEPARATOR = '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -';
 
 function printQuestionTitle(title) {
@@ -7,6 +5,149 @@ function printQuestionTitle(title) {
   console.log(title);
   console.log(SMALL_SEPARATOR);
 }
+
+// PROBLEMS
+
+const problem1Title = 'Question11 (PROBLEM): Find the missing number in a given integer array of 1 to 10';
+
+function problem1() {
+  printQuestionTitle(problem1Title);
+  const array = [1, 3, 4, 5, 2, 8, 10, 7, 6]; // 9 missed
+  console.log('array: ', array);
+
+  // FUN FACT: This option doesn't work because the sorted function set the 10 number in the second position (After 1, before 2)
+
+  // Option 1
+  /* const arraySorted = array.sort();
+  let pos = 0;
+  let numberToFind = pos + 1;
+  console.log("arraySorted: ", arraySorted);
+  while (numberToFind === arraySorted[pos]) {
+    pos += 1;
+    numberToFind += 1;
+  }
+  console.log(`option 1: ${numberToFind}`);
+  */
+
+  // Option 2
+  let numberToFind = 1;
+  let found = false;
+  while (!found) {
+    if (array.includes(numberToFind)) {
+      numberToFind += 1;
+    } else {
+      found = true;
+    }
+  }
+  console.log('Option 2: ', numberToFind);
+
+  // Option 3
+  let number = 1;
+  let numberMissedFound = null;
+  while (!numberMissedFound) {
+    let numberFound = false;
+    let pos = 0;
+    while (!numberMissedFound && !numberFound && pos <= array.length) {
+      if (array[pos] === number) numberFound = true;
+      pos += 1;
+    }
+    if (!numberFound) numberMissedFound = number;
+    number += 1;
+  }
+  console.log('Option 3: ', numberMissedFound);
+}
+problem1();
+
+const problem2Title = 'Question12 (PROBLEM): Find duplicated number in a given integer array';
+
+function problem2() {
+  printQuestionTitle(problem2Title);
+  const array = [1, 3, 4, 5, 2, 8, 8, 10, 7, 10, 6, 1];
+  console.log('array: ', array);
+
+  const numbersRepetitions = {};
+  array.forEach((number) => {
+    if (!numbersRepetitions[number]) numbersRepetitions[number] = 0;
+    numbersRepetitions[number] += 1;
+  });
+
+  const numbersRepeated = Object.keys(numbersRepetitions).filter((key) => numbersRepetitions[key] > 1);
+  console.log('numbersRepeated: ', numbersRepeated);
+}
+problem2();
+
+const problem3Title = 'Question13 (PROBLEM): Return accumulative of an array';
+
+function problem3() {
+  printQuestionTitle(problem3Title);
+  const array = [1, 5, 10, 8, 20];
+  console.log('array: ', array);
+  const solution = array.map((number, index) => array.slice(0, index + 1).reduce((total, num) => num + total));
+  console.log('solution: ', solution);
+}
+problem3();
+
+const problem4Title = 'Question14 (PROBLEM): Find nearest number of 21 from a sorted array';
+
+function problem4() {
+  printQuestionTitle(problem4Title);
+  let array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+  const nearestNumber = 21;
+
+  // Option 1
+  /* let found = 0;
+  while (!found) {
+    const midPos = Math.floor(array.length / 2);
+    const midValue = array[midPos];
+    const midValuePlusOne = array[midPos + 1];
+
+    // nearest number founded
+    if (midValue <= nearestNumber && (!midValuePlusOne || midValuePlusOne >= nearestNumber)) {
+      // Check which of number is the nearest number
+      const midDifference = nearestNumber - midValue;
+      const midPlusOneDifference = midValuePlusOne && midValuePlusOne - nearestNumber;
+      if (!midPlusOneDifference || midDifference <= midPlusOneDifference) found = midValue;
+      else found = midValuePlusOne;
+    }
+
+    // reduce array
+    if (midValue >= nearestNumber) {
+      array = array.splice(0, midPos + 1);
+    } else {
+      array = array.splice(midPos);
+    }
+  }
+  console.log('Option 1: ', found);
+   */
+
+  // Option 2 -> recursive mode
+  const getNearestNumber = (arrayToCheck, nearestNumberToCheck) => {
+    const midPos = Math.floor(arrayToCheck.length / 2);
+    const midValue = arrayToCheck[midPos];
+    const midValuePlusOne = arrayToCheck[midPos + 1];
+
+    // Case 0
+    if (midValue <= nearestNumberToCheck && (!midValuePlusOne || midValuePlusOne >= nearestNumberToCheck)) {
+      // Check which of number is the nearest number
+      const midDifference = nearestNumberToCheck - midValue;
+      const midPlusOneDifference = midValuePlusOne && midValuePlusOne - nearestNumberToCheck;
+      if (!midPlusOneDifference || midDifference <= midPlusOneDifference) return midValue;
+      return midValuePlusOne;
+    }
+
+    // reduce array
+    if (midValue >= nearestNumberToCheck) {
+      array = array.splice(0, midPos + 1);
+    } else {
+      array = array.splice(midPos);
+    }
+    return getNearestNumber(array, nearestNumberToCheck);
+  };
+  console.log(' Option 2: ', getNearestNumber(array, nearestNumber));
+}
+problem4();
+
+// THEORY QUESTIONS
 
 const question1Title = 'Question 1: Equalty';
 function question1() {
@@ -132,142 +273,3 @@ function question10() {
   console.log('Slice get the elements without extract them of the array');
 }
 question10();
-
-const question11Title = 'Question11 (PROBLEM): Find the missing number in a given integer array of 1 to 10';
-
-function question11() {
-  printQuestionTitle(question11Title);
-  const array = [1, 3, 4, 5, 2, 8, 10, 7, 6]; // 9 missed
-  console.log('array: ', array);
-
-  // FUN FACT: This option doesn't work because the sorted function set the 10 number in the second position (After 1, before 2)
-
-  // Option 1
-  /* const arraySorted = array.sort();
-  let pos = 0;
-  let numberToFind = pos + 1;
-  console.log("arraySorted: ", arraySorted);
-  while (numberToFind === arraySorted[pos]) {
-    pos += 1;
-    numberToFind += 1;
-  }
-  console.log(`option 1: ${numberToFind}`);
-  */
-
-  // Option 2
-  let numberToFind = 1;
-  let found = false;
-  while (!found) {
-    if (array.includes(numberToFind)) {
-      numberToFind += 1;
-    } else {
-      found = true;
-    }
-  }
-  console.log('Option 2: ', numberToFind);
-
-  // Option 3
-  let number = 1;
-  let numberMissedFound = null;
-  while (!numberMissedFound) {
-    let numberFound = false;
-    let pos = 0;
-    while (!numberMissedFound && !numberFound && pos <= array.length) {
-      if (array[pos] === number) numberFound = true;
-      pos += 1;
-    }
-    if (!numberFound) numberMissedFound = number;
-    number += 1;
-  }
-  console.log('Option 3: ', numberMissedFound);
-}
-question11();
-
-const question12Title = 'Question12 (PROBLEM): Find duplicated number in a given integer array';
-
-function question12() {
-  printQuestionTitle(question12Title);
-  const array = [1, 3, 4, 5, 2, 8, 8, 10, 7, 10, 6, 1];
-  console.log('array: ', array);
-
-  const numbersRepetitions = {};
-  array.forEach((number) => {
-    if (!numbersRepetitions[number]) numbersRepetitions[number] = 0;
-    numbersRepetitions[number] += 1;
-  });
-
-  const numbersRepeated = Object.keys(numbersRepetitions).filter((key) => numbersRepetitions[key] > 1);
-  console.log('numbersRepeated: ', numbersRepeated);
-}
-question12();
-
-const question13Title = 'Question13 (PROBLEM): Return accumulative of an array';
-
-function question13() {
-  printQuestionTitle(question13Title);
-  const array = [1, 5, 10, 8, 20];
-  console.log('array: ', array);
-  const solution = array.map((number, index) => array.slice(0, index + 1).reduce((total, num) => num + total));
-  console.log('solution: ', solution);
-}
-question13();
-
-const question14Title = 'Question14 (PROBLEM): Find nearest number of 21 from a sorted array';
-
-function question14() {
-  printQuestionTitle(question14Title);
-  let array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
-  const nearestNumber = 21;
-
-  // Option 1
-  /* let found = 0;
-  while (!found) {
-    const midPos = Math.floor(array.length / 2);
-    const midValue = array[midPos];
-    const midValuePlusOne = array[midPos + 1];
-
-    // nearest number founded
-    if (midValue <= nearestNumber && (!midValuePlusOne || midValuePlusOne >= nearestNumber)) {
-      // Check which of number is the nearest number
-      const midDifference = nearestNumber - midValue;
-      const midPlusOneDifference = midValuePlusOne && midValuePlusOne - nearestNumber;
-      if (!midPlusOneDifference || midDifference <= midPlusOneDifference) found = midValue;
-      else found = midValuePlusOne;
-    }
-
-    // reduce array
-    if (midValue >= nearestNumber) {
-      array = array.splice(0, midPos + 1);
-    } else {
-      array = array.splice(midPos);
-    }
-  }
-  console.log('Option 1: ', found);
-   */
-
-  // Option 2 -> recursive mode
-  const getNearestNumber = (arrayToCheck, nearestNumberToCheck) => {
-    const midPos = Math.floor(arrayToCheck.length / 2);
-    const midValue = arrayToCheck[midPos];
-    const midValuePlusOne = arrayToCheck[midPos + 1];
-
-    // Case 0
-    if (midValue <= nearestNumberToCheck && (!midValuePlusOne || midValuePlusOne >= nearestNumberToCheck)) {
-      // Check which of number is the nearest number
-      const midDifference = nearestNumberToCheck - midValue;
-      const midPlusOneDifference = midValuePlusOne && midValuePlusOne - nearestNumberToCheck;
-      if (!midPlusOneDifference || midDifference <= midPlusOneDifference) return midValue;
-      return midValuePlusOne;
-    }
-
-    // reduce array
-    if (midValue >= nearestNumberToCheck) {
-      array = array.splice(0, midPos + 1);
-    } else {
-      array = array.splice(midPos);
-    }
-    return getNearestNumber(array, nearestNumberToCheck);
-  };
-  console.log(' Option 2: ', getNearestNumber(array, nearestNumber));
-}
-question14();
