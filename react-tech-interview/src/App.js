@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useReducer } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import useDidUpdate from './hooks/useDidUpdate';
 
 const KEY_STATE_SESSION_STORAGE = 'state'
@@ -26,27 +26,40 @@ const getInitState = () => {
   const defaultState = { operator: 'plus', value: 10, valueOperator: 10 };
 
   const state = sessionStorage.getItem(KEY_STATE_SESSION_STORAGE);
-  debugger;
+
   if (state) {
     return JSON.parse(state);
   }
   return defaultState;
 }
 
+const List = ({ getList }) => <span>{getList()}</span>
+
 const basicComponent = React.memo(({ onClick, value = 0, operator, valueOperator, setState }) => {
   const options = ['divide', 'minus', 'multiply', 'plus'];
+
+  const handleInput = useCallback((input) => {
+    setState({ valueOperator: Number(input.target.value) })
+  }, [valueOperator]);
+
+  const handleSelect = (select) => {
+    setState({ operator: select.target.value });
+  }
+
 
   return (
     <>
       <div className="form">
         <span>Current value: {value}</span>
-        <select value={operator} onChange={(select) => {
-          setState({ operator: select.target.value });
-        }}>
+        <select value={operator} onChange={handleSelect}>
           {options.map((option) => (<option value={option} key={option}>{option}</option>))}
         </select>
-        <input type="number" value={valueOperator} onChange={(input) => setState({ valueOperator: Number(input.target.value) })} />
-        <button onClick={() => onClick()}>Apply operation</button>
+        <input type="number" value={valueOperator} onChange={handleInput} />
+        <button onClick={onClick}>Apply operation</button>
+        <div>
+          <span>History Values: </span>
+          <List getList={() => []} />
+        </div>
       </div>
     </>
   );
