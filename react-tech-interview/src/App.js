@@ -46,16 +46,15 @@ const basicComponent = React.memo(({ onClick, value = 0, operator, valueOperator
     setState({ operator: select.target.value });
   }
 
-
   return (
     <>
       <div className="form">
-        <span>Current value: {value}</span>
+        <span data-testid="currentValue" value={value}>Current value: {value}</span>
         <select value={operator} onChange={handleSelect}>
           {options.map((option) => (<option value={option} key={option}>{option}</option>))}
         </select>
         <input type="number" value={valueOperator} onChange={handleInput} />
-        <button onClick={onClick}>Apply operation</button>
+        <button data-testid="btn-applyOperation" onClick={onClick}>Apply operation</button>
         <div>
           <span>History Values: </span>
           <List getList={() => []} />
