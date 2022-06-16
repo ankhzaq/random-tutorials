@@ -273,3 +273,20 @@ function question10() {
   console.log('Slice get the elements without extract them of the array');
 }
 question10();
+
+const question11Title = 'Question11: sort array with objects';
+
+function question11() {
+  printQuestionTitle(question11Title);
+  const array = [
+    { id: 1, name: 'Zaquiel' },
+    { id: 6, name: 'Tom' },
+    { id: 2, name: 'Martha' },
+    { id: 10, name: 'Esther' },
+    { id: 8, name: 'Jack' },
+  ];
+  console.log('array: ', array);
+  const arraySorted = array.sort((a, b) => a.id - b.id);
+  console.log('arraySorted: ', arraySorted);
+}
+question11();
