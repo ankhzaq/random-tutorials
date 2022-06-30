@@ -290,3 +290,22 @@ function question11() {
   console.log('arraySorted: ', arraySorted);
 }
 question11();
+
+const question12Title = 'Question12: fibonacci function';
+
+function question12() {
+  printQuestionTitle(question12Title);
+
+  const fibonacci = (n) => {
+    const fib = [0, 1];
+    for (let i = 2; i < n; i++) {
+      fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    return fib;
+  }
+
+  const number = 12;
+  const result = fibonacci(number);
+  console.log(`fibonacci (${number}): `, result);
+}
+question12();
