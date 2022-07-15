@@ -1,5 +1,5 @@
 import React from "react";
-import Counter, { DATA_TESTS_IDS } from './Counter';
+import Counter, { DATA_TESTS_IDS, getCounterClassByValue } from './Counter';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const INITIAL_INPUT_VALUE = "1";
@@ -106,4 +106,21 @@ test("add to input and then, add to counter and subtract to counter", () => {
 
   const nextCounterValue = (Number(INITIAL_COUNTER_VALUE) + Number(NEXT_INPUT_VALUE)).toString();
   expect(counterEl.textContent).toBe(nextCounterValue);
-})
+});
+
+test("check className applied to the counter", () => {
+  render(<Counter />);
+  const counterEl = screen.getByTestId(DATA_TESTS_IDS.counter);
+  const addBtn = screen.getByTestId(DATA_TESTS_IDS.addBtn);
+  const subtractBtn = screen.getByTestId(DATA_TESTS_IDS.subtractBtn);
+
+  const getClass = () => getCounterClassByValue(Number(counterEl.textContent))
+
+  expect(counterEl.className).toBe(getClass());
+  fireEvent.click(addBtn);
+  expect(counterEl.className).toBe(getClass());
+  fireEvent.click(subtractBtn);
+  expect(counterEl.className).toBe(getClass());
+  fireEvent.click(subtractBtn);
+  expect(counterEl.className).toBe(getClass());
+});

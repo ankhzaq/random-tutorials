@@ -9,6 +9,8 @@ export const DATA_TESTS_IDS = {
   subtractBtn: "subtract-btn"
 }
 
+export const getCounterClassByValue = (value) => value ? (value > 0 ? 'color-primary' : 'color-danger') : '';
+
 function Counter() {
   const [counterValue, setCounterValue] = useState(0);
   const [inputValue, setInputValue] = useState(1);
@@ -20,10 +22,12 @@ function Counter() {
   const onPlusCounter = () => setCounterValue(counterValue + inputValue);
   const onSubtractCounter = () => setCounterValue(counterValue - inputValue);
 
+  const counterClass = getCounterClassByValue(counterValue);
+
   return (
     <div>
       <h3 data-testid={DATA_TESTS_IDS.header}>My Counter</h3>
-      <h2 data-testid={DATA_TESTS_IDS.counter}>{counterValue}</h2>
+      <h2 className={counterClass} data-testid={DATA_TESTS_IDS.counter}>{counterValue}</h2>
       <button
         data-testid={DATA_TESTS_IDS.subtractBtn}
         onClick={onSubtractCounter}
