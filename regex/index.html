@@ -219,6 +219,11 @@
   regex = /^\s+|\s+$/g;
   console.log("result 33: ", string.replace(regex, '')); // true
 
+  // EXTRA
+  string = "jofllrades2";
+  regex = /(?=.*[A-Z])(?=.*\d)(?=[\da-z]{6,})/;
+  console.log("result 34: ", regex.test(string));
+
 </script>
 </body>
 </html>
